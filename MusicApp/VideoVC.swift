@@ -10,10 +10,27 @@ import UIKit
 
 class VideoVC: UIViewController {
 
+    @IBOutlet weak var videoView: UIWebView!
+    
+    @IBOutlet weak var titleLbl: UILabel!
+    
+    private var _partyRock: PartyRock!
+    
+    var partyRock: PartyRock {
+        get {
+            return _partyRock
+        }
+        set {
+            _partyRock = newValue
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        titleLbl.text = partyRock.videoTitle
+        videoView.loadHTMLString(partyRock.videoURL, baseURL: nil)
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
